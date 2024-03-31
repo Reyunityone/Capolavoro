@@ -6,6 +6,7 @@ body{
     justify-content: center;
     min-height: 100vh;
     font-family: 'Courier New', Courier, monospace;
+    cursor: url("select.cur"), pointer;
 }
 
 .container{
@@ -97,3 +98,14 @@ button:hover{
 #check:checked ~ .signup label{
     transform: scale(0.6);
 }
+
+.cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background-color: lightblue; /* White cursor */
+    border-radius: 50%; /* Circular shape */
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform 0.2s ease; /* Smooth transition */
+  }
