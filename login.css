@@ -5,8 +5,11 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    font-family: 'Courier New', Courier, monospace;
-    cursor: url("select.cur"), pointer;
+    font-family: Helvetica, Courier, monospace;
+    cursor: url("select.cur"), default;
+    background: url("backgroud.png");
+
+
 }
 
 .container{
@@ -15,7 +18,7 @@ body{
     background: url("white-paper-planes-minimalist-style-on-space-blue-background-free-photo.jpg") center / cover;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 5px 20px 50px #FFF;
+    box-shadow: 5px 10px 20px #333;
 }
 
 #check{
@@ -94,18 +97,24 @@ button:hover{
 }
 #check:checked ~ .login label{
     transform: scale(1);
+    padding-top: 5px;
 }
 #check:checked ~ .signup label{
     transform: scale(0.6);
 }
 
-.cursor {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    background-color: lightblue; /* White cursor */
-    border-radius: 50%; /* Circular shape */
-    z-index: 9999;
+svg.trail{
     pointer-events: none;
-    transition: transform 0.2s ease; /* Smooth transition */
-  }
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+svg.trail path{
+    fill: none;
+    stroke: #fff;
+    stroke-width: 8px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
