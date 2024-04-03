@@ -12,7 +12,7 @@
     <div class="container">
         <input type="checkbox" name="" id="check" aria-hidden="true" checked>
         <div class="signup">
-            <form action="signupHandler.php" method="post">
+            <form action="" method="post">
                 <label for="check">Registrati</label>
                 <input type="text" name="nome" placeholder="Nome" required="">
                 <input type="text" name="cognome" placeholder="Cognome" required="">
@@ -40,7 +40,9 @@
     <svg class="trail" viewBox="0 0 400 400">
         <path d="M 100 100 L 200 200 L 300 100" />
     </svg>
-
+    <?php
+      echo "<script>alert('Signup test')</script>";
+    ?>
     <script>
         const svg = document.querySelector("svg.trail");
         const path = svg.querySelector("path");
