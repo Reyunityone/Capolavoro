@@ -118,3 +118,9 @@ svg.trail path{
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+
+@media screen and (min-width: 1280px) {
+    .container{
+        width: 1000px;
+    }
+}
