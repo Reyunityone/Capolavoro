@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 body{
     margin: 0;
     padding: 0;
@@ -5,7 +6,7 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    font-family: Helvetica, Courier, monospace;
+    font-family: Quicksand, Courier, monospace;
     cursor: url("select.cur"), default;
     background: url("backgroud.png");
 
@@ -71,7 +72,12 @@ button{
 }
 
 button:hover{
-    background:  #C6CFFF;
+    background:  #F8D3FF;
+    width: 65%;
+    height: 45px;
+    animation: all ease;
+    box-shadow: 5px 5px 5px gray;
+
 }
 
 .login{
@@ -88,6 +94,11 @@ button:hover{
 
 .login button:hover{
     background: #552;
+    width: 65%;
+    height: 45px;
+    animation: all ease;
+    box-shadow: 5px 5px 5px gray;
+    
 }
 .login label{
     transform: scale(0.6);
