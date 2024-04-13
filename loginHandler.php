@@ -16,7 +16,13 @@
             $_SESSION["nome"] = $row["nome"];
             $_SESSION["cognome"] = $row["cognome"];
             $_SESSION["codice_fiscale"] = $row["codice_fiscale"];
+            $_SESSION["loggedin"] = true;
             header("Location: homepage.php");
+            exit;
         }
     }
+    session_start();
+    $_SESSION["error"] = "Credenziali errate";
+    header("Location: login.php");
+    
 ?>

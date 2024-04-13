@@ -10,6 +10,16 @@
 
 <body>
     <h1>Paper Travels</h1>
+    <?php
+        session_start();
+        if(isset($_SESSION["error"])){
+            echo "<h2>".$_SESSION["error"]."</h2>";
+            unset($_SESSION["error"]);
+        }
+        else if(isset($_SESSION["email"])){
+            header("Location: homepage.php");
+        }
+    ?>
     <div class="container">
         <input type="checkbox" name="" id="check" aria-hidden="true" checked>
         <div class="signup">
