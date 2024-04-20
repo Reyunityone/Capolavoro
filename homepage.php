@@ -11,7 +11,7 @@
   <title>Document</title>
 </head>
 
-<body>
+<body class="transition-colors duration-200">
   <div class="navbar bg-base-200 fixed top-0 left-0">
     <div class="flex-none">
       <div class="dropdown">
@@ -37,7 +37,7 @@
     <div class="flex-none">
       <button class="btn btn-ghost" id="change-theme">
         <label for="change-theme" id="sun" class="hidden"><svg viewBox="0 0 384 512" height="1em"
-            xmlns="http://www.w3.org/2000/svg" class="moon">
+            xmlns="http://www.w3.org/2000/svg" class="moon stroke-white fill-white">
             <path
               d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z">
             </path>
@@ -51,13 +51,51 @@
       </button>
     </div>
   </div>
+  <div class="container flex items-center justify-center w-screen gap-10 bg-base-200 p-6 rounded-xl">
+    <div class="search-component w-1/4">
+      <div class="label">
+        <span class="bold">Dove?</span>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
+        <?php
+        session_start();
+          echo "<input type='text' class='grow cursor-text' placeholder='Dove vuoi andare, ".$_SESSION["nome"]."?' required='' />";
+        ?>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 20.8995L16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995ZM12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13ZM12 15C9.79086 15 8 13.2091 8 11C8 8.79086 9.79086 7 12 7C14.2091 7 16 8.79086 16 11C16 13.2091 14.2091 15 12 15Z"></path></svg>
+      </label>
+    </div>
+    <div class="search-component w-1/4">
+      <div class="label">
+        <span class="bold">Chi?</span>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
+        <input type="number" min="1" class="grow cursor-text" placeholder="Quante persone viaggeranno?" required='' />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M2 22C2 17.5817 5.58172 14 10 14C14.4183 14 18 17.5817 18 22H16C16 18.6863 13.3137 16 10 16C6.68629 16 4 18.6863 4 22H2ZM10 13C6.685 13 4 10.315 4 7C4 3.685 6.685 1 10 1C13.315 1 16 3.685 16 7C16 10.315 13.315 13 10 13ZM10 11C12.21 11 14 9.21 14 7C14 4.79 12.21 3 10 3C7.79 3 6 4.79 6 7C6 9.21 7.79 11 10 11ZM18.2837 14.7028C21.0644 15.9561 23 18.752 23 22H21C21 19.564 19.5483 17.4671 17.4628 16.5271L18.2837 14.7028ZM17.5962 3.41321C19.5944 4.23703 21 6.20361 21 8.5C21 11.3702 18.8042 13.7252 16 13.9776V11.9646C17.6967 11.7222 19 10.264 19 8.5C19 7.11935 18.2016 5.92603 17.041 5.35635L17.5962 3.41321Z"></path></svg>
+        </svg>
+      </label>
+    </div>
+    <div class="search-component w-1/4">
+      <div class="label">
+        <span class="bold">Partenza</span>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
+        <input type="date" class="grow cursor-text" placeholder="Quando vuoi partire?" onclick="this.showPicker?.()"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM11 13V17H6V13H11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z"></path></svg>
+      </label>
+    </div>
+    <div class="search-component w-1/4">
+      <div class="label">
+        <span class="bold">Ritorno</span>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
+        <input type="date" class="grow cursor-text" placeholder="Quando tornerai?" onclick="this.showPicker?.()"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM11 13V17H6V13H11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z"></path></svg>
+      </label>
+    </div>
+  </div>
   <svg class="trail" viewBox="0 0 400 400">
     <path d="M 100 100 L 200 200 L 300 100" />
   </svg>
-  <?php
-  session_start();
-  echo "Ciao " . $_SESSION["nome"] . " " . $_SESSION["cognome"];
-  ?>
   <script src="trail.js"></script>
   <script>
     document.getElementById("change-theme").addEventListener('click', () => {

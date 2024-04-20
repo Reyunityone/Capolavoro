@@ -30,3 +30,7 @@ svg.trail path{
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+
+input[type='date']::-webkit-calendar-picker-indicator {
+    background: transparent;
+}
