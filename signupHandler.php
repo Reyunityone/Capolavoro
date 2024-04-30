@@ -16,5 +16,5 @@
     $stmt->bind_param("ssssssssss", $codice_fiscale, $nome, $cognome, $via, $civico ,$citta, $provincia, $telefono, $email, $password);
     $stmt->execute();
     $stmt->close();
-    header("Location:login.html");
+    header("Location:login.php");
 ?>

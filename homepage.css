@@ -13,6 +13,7 @@ body{
     font-family: Quicksand, Courier, monospace;
     cursor: url("select.cur"), default;
     transition: 2s;
+    background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("https://wallpaperswide.com/download/travel_to_norway_s_lofoten_islands-wallpaper-1920x1080.jpg");
 }
 
 svg.trail{
