@@ -11,7 +11,7 @@
   <title>Document</title>
 </head>
 
-<body class="transition-colors duration-200 bg-base-100:important flex flex-col">
+<body class="transition-colors duration-200 bg-base-100:important flex flex-col justify-start">
   <div class="navbar bg-base-200 sticky top-0 left-0 z-50">
     <div class="flex-none">
       <div class="dropdown">
@@ -34,61 +34,67 @@
     <div class="flex-1">
       <a class="btn btn-ghost text-xl" style="font-family: Pacifico;">Paper Travels</a>
     </div>
-    <form class="container z-50 sticky top-20 left-0 flex items-center justify-center w-screen gap-10 bg-base-200 p-6 rounded-xl" method="POST" action="search_viaggi.php">
-    <div class="search-component w-1/4">
-      <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
-        <?php
-        session_start();
-        echo "<input type='text' name='destinazione' class='grow cursor-text' placeholder='Dove vuoi andare, " . $_SESSION["nome"] . "?' required='' />";
-        ?>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-          <path
-            d="M12 20.8995L16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995ZM12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13ZM12 15C9.79086 15 8 13.2091 8 11C8 8.79086 9.79086 7 12 7C14.2091 7 16 8.79086 16 11C16 13.2091 14.2091 15 12 15Z">
-          </path>
-        </svg>
-      </label>
-    </div>
-    <div class="search-component w-1/4">
-      <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
-        <input type="number" min="1" name="nPersone" class="grow cursor-text" placeholder="Quante persone viaggeranno?" required='' />
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-          <path
-            d="M2 22C2 17.5817 5.58172 14 10 14C14.4183 14 18 17.5817 18 22H16C16 18.6863 13.3137 16 10 16C6.68629 16 4 18.6863 4 22H2ZM10 13C6.685 13 4 10.315 4 7C4 3.685 6.685 1 10 1C13.315 1 16 3.685 16 7C16 10.315 13.315 13 10 13ZM10 11C12.21 11 14 9.21 14 7C14 4.79 12.21 3 10 3C7.79 3 6 4.79 6 7C6 9.21 7.79 11 10 11ZM18.2837 14.7028C21.0644 15.9561 23 18.752 23 22H21C21 19.564 19.5483 17.4671 17.4628 16.5271L18.2837 14.7028ZM17.5962 3.41321C19.5944 4.23703 21 6.20361 21 8.5C21 11.3702 18.8042 13.7252 16 13.9776V11.9646C17.6967 11.7222 19 10.264 19 8.5C19 7.11935 18.2016 5.92603 17.041 5.35635L17.5962 3.41321Z">
-          </path>
-        </svg>
-        </svg>
-      </label>
-    </div>
-    <div class="search-component w-1/4">
-      <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
-        <input type="date" name="andata" class="grow cursor-text" placeholder="Quando vuoi partire?" onclick="this.showPicker?.()" />
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-          <path
-            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM11 13V17H6V13H11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
-          </path>
-        </svg>
-      </label>
-    </div>
-    <div class="search-component w-1/4">
-      <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
-        <input type="date" name="ritorno" class="grow cursor-text" placeholder="Quando tornerai?" onclick="this.showPicker?.()" />
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-          <path
-            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM11 13V17H6V13H11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
-          </path>
-        </svg>
-      </label>
-    </div>
-    <div class="flex flex-col justify-end h-full mt-auto mb-2 pointer">
-      <button class="btn btn-circle pointer shadow-2xl btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" class="pointer" >
-          <path
-            d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748ZM12.1779 7.17624C11.4834 7.48982 11 8.18846 11 9C11 10.1046 11.8954 11 13 11C13.8115 11 14.5102 10.5166 14.8238 9.82212C14.9383 10.1945 15 10.59 15 11C15 13.2091 13.2091 15 11 15C8.79086 15 7 13.2091 7 11C7 8.79086 8.79086 7 11 7C11.41 7 11.8055 7.06167 12.1779 7.17624Z">
-          </path>
-        </svg>
-      </button>
-    </div>
-  </form>
+    <form
+      class="container z-50 sticky top-20 left-0 flex items-center justify-center w-screen gap-10 bg-base-200 p-6 rounded-xl"
+      method="POST" action="search_viaggi.php">
+      <div class="search-component w-1/4">
+        <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
+          <?php
+          session_start();
+          echo "<input type='text' name='destinazione' class='grow cursor-text' placeholder='Dove vuoi andare, " . $_SESSION["nome"] . "?' required='' />";
+          ?>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path
+              d="M12 20.8995L16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995ZM12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM12 13C13.1046 13 14 12.1046 14 11C14 9.89543 13.1046 9 12 9C10.8954 9 10 9.89543 10 11C10 12.1046 10.8954 13 12 13ZM12 15C9.79086 15 8 13.2091 8 11C8 8.79086 9.79086 7 12 7C14.2091 7 16 8.79086 16 11C16 13.2091 14.2091 15 12 15Z">
+            </path>
+          </svg>
+        </label>
+      </div>
+      <div class="search-component w-1/4">
+        <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
+          <input type="number" min="1" name="nPersone" class="grow cursor-text"
+            placeholder="Quante persone viaggeranno?" required='' />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path
+              d="M2 22C2 17.5817 5.58172 14 10 14C14.4183 14 18 17.5817 18 22H16C16 18.6863 13.3137 16 10 16C6.68629 16 4 18.6863 4 22H2ZM10 13C6.685 13 4 10.315 4 7C4 3.685 6.685 1 10 1C13.315 1 16 3.685 16 7C16 10.315 13.315 13 10 13ZM10 11C12.21 11 14 9.21 14 7C14 4.79 12.21 3 10 3C7.79 3 6 4.79 6 7C6 9.21 7.79 11 10 11ZM18.2837 14.7028C21.0644 15.9561 23 18.752 23 22H21C21 19.564 19.5483 17.4671 17.4628 16.5271L18.2837 14.7028ZM17.5962 3.41321C19.5944 4.23703 21 6.20361 21 8.5C21 11.3702 18.8042 13.7252 16 13.9776V11.9646C17.6967 11.7222 19 10.264 19 8.5C19 7.11935 18.2016 5.92603 17.041 5.35635L17.5962 3.41321Z">
+            </path>
+          </svg>
+          </svg>
+        </label>
+      </div>
+      <div class="search-component w-1/4">
+        <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
+          <input type="date" name="andata" class="grow cursor-text" placeholder="Quando vuoi partire?"
+            onclick="this.showPicker?.()" />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path
+              d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM11 13V17H6V13H11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
+            </path>
+          </svg>
+        </label>
+      </div>
+      <div class="search-component w-1/4">
+        <label class="input input-bordered flex items-center gap-2 w-full h-16 cursor-text">
+          <input type="date" name="ritorno" class="grow cursor-text" placeholder="Quando tornerai?"
+            onclick="this.showPicker?.()" />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path
+              d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM11 13V17H6V13H11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
+            </path>
+          </svg>
+        </label>
+      </div>
+      <div class="flex flex-col justify-end h-full mt-auto mb-2 pointer">
+        <button class="btn btn-circle pointer shadow-2xl btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"
+            class="pointer">
+            <path
+              d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748ZM12.1779 7.17624C11.4834 7.48982 11 8.18846 11 9C11 10.1046 11.8954 11 13 11C13.8115 11 14.5102 10.5166 14.8238 9.82212C14.9383 10.1945 15 10.59 15 11C15 13.2091 13.2091 15 11 15C8.79086 15 7 13.2091 7 11C7 8.79086 8.79086 7 11 7C11.41 7 11.8055 7.06167 12.1779 7.17624Z">
+            </path>
+          </svg>
+        </button>
+      </div>
+    </form>
     <div class="flex-none">
       <button class="btn btn-ghost" id="change-theme">
         <label for="change-theme" id="sun" class="hidden"><svg viewBox="0 0 384 512" height="1em"
@@ -110,32 +116,53 @@
     <path d="M 100 100 L 200 200 L 300 100" />
   </svg>
   <?php
-    include "connessione.php";
-    $destinazione = $_POST["destinazione"];
-    $data_partenza = $_POST["andata"];
-    $data_ritorno = $_POST["ritorno"];
-    $nPersone = $_POST["nPersone"];
-    $stmt = $conn->prepare("SELECT * FROM viaggio v JOIN prenotazione p ON v.id_viaggio = p.viaggio JOIN destinazioni d ON v.id_viaggio = d.id_viaggio
+  include "connessione.php";
+  $destinazione = $_POST["destinazione"];
+  $data_partenza = $_POST["andata"];
+  $data_ritorno = $_POST["ritorno"];
+  $nPersone = $_POST["nPersone"];
+  $stmt = $conn->prepare("SELECT * FROM viaggio v JOIN prenotazione p ON v.id_viaggio = p.viaggio JOIN destinazioni d ON v.id_viaggio = d.id_viaggio
     WHERE d.destinazione = ? AND p.data_partenza >= ? AND p.data_ritorno <= ?");
-    $stmt->bind_param("sss", $destinazione, $data_partenza, $data_ritorno);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()){
-        echo '
+  $stmt->bind_param("sss", $destinazione, $data_partenza, $data_ritorno);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  while ($row = $result->fetch_assoc()) {
+    echo '
         <div class="card card-side bg-base-200 shadow-xl w-3/4 my-12">
+        <figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="120" height="120" fill="currentColor"><path d="M1.94607 9.31543C1.42353 9.14125 1.4194 8.86022 1.95682 8.68108L21.043 2.31901C21.5715 2.14285 21.8746 2.43866 21.7265 2.95694L16.2733 22.0432C16.1223 22.5716 15.8177 22.59 15.5944 22.0876L11.9999 14L17.9999 6.00005L9.99992 12L1.94607 9.31543Z"></path></svg></figure>
         <div class="card-body">
-          <h2 class="card-title">'.$row["partenza"].' - '.$row["destinazione"].'</h2>
-          <p>Click the button to watch on Jetflix app.</p>
+          <h2 class="card-title text-primary">' . $row["partenza"] . ' - ' . ucfirst($destinazione) . '</h2>
+          <div>';
+    $stmt2 = $conn->prepare("SELECT destinazione, mezzo FROM destinazioni WHERE id_viaggio = ?");
+    $stmt2 -> bind_param("i", $row["id_viaggio"]);
+    $stmt2-> execute();
+    $resultInner = $stmt2->get_result();
+    $previousDestinazione = $row["partenza"];
+    while($innerRow = $resultInner -> fetch_assoc()){
+      switch($innerRow["mezzo"]){
+        case "Aereo":
+          $svg = '<span class="whitespace-nowrap">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M14 8.94737L22 14V16L14 13.4737V18.8333L17 20.5V22L12.5 21L8 22V20.5L11 18.8333V13.4737L3 16V14L11 8.94737V3.5C11 2.67157 11.6716 2 12.5 2C13.3284 2 14 2.67157 14 3.5V8.94737Z"></path></svg></span>';
+          break;
+        case "Treno":
+          $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M17.2 20L19 21.5V22H5V21.5L6.8 20H5C3.89543 20 3 19.1046 3 18V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V18C21 19.1046 20.1046 20 19 20H17.2ZM7 5C5.89543 5 5 5.89543 5 7V18H19V7C19 5.89543 18.1046 5 17 5H7ZM12 17C10.8954 17 10 16.1046 10 15C10 13.8954 10.8954 13 12 13C13.1046 13 14 13.8954 14 15C14 16.1046 13.1046 17 12 17ZM6 7H18V11H6V7Z"></path></svg>';
+          break;
+        case "Nave":
+          $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M4 10.4V4C4 3.44772 4.44772 3 5 3H10V1H14V3H19C19.5523 3 20 3.44772 20 4V10.4L21.0857 10.7257C21.5974 10.8792 21.8981 11.4078 21.7685 11.9261L20.2516 17.9938C20.1682 17.9979 20.0844 18 20 18C19.4218 18 18.8665 17.9019 18.3499 17.7213L19.6 12.37L12 10L4.4 12.37L5.65008 17.7213C5.13348 17.9019 4.5782 18 4 18C3.91564 18 3.83178 17.9979 3.74845 17.9938L2.23152 11.9261C2.10195 11.4078 2.40262 10.8792 2.91431 10.7257L4 10.4ZM6 9.8L12 8L18 9.8V5H6V9.8ZM4 20C5.53671 20 6.93849 19.4223 8 18.4722C9.06151 19.4223 10.4633 20 12 20C13.5367 20 14.9385 19.4223 16 18.4722C17.0615 19.4223 18.4633 20 20 20H22V22H20C18.5429 22 17.1767 21.6104 16 20.9297C14.8233 21.6104 13.4571 22 12 22C10.5429 22 9.17669 21.6104 8 20.9297C6.82331 21.6104 5.45715 22 4 22H2V20H4Z"></path></svg>';
+          break;
+      }
+      echo $previousDestinazione." - ".$innerRow["destinazione"]. " - ".$svg."<br>";
+      $previousDestinazione = $innerRow["destinazione"];
+    }
+    echo '</div>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary">Prenota</button>
+            <button class="btn btn-primary" value="'.$row["id_viaggio"].'">Prenota</button>
           </div>
         </div>
       </div>
       ';
-    }
+  }
 
-?>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ab ea, rerum odio voluptatem consequatur sit magnam accusantium omnis repellendus magni ex distinctio repudiandae maiores architecto iure suscipit labore. Reprehenderit sequi ad nemo animi consequatur quaerat. Hic doloremque modi fugit! Quos itaque hic asperiores unde ipsam quod quo, quis fuga saepe reprehenderit magnam perferendis nisi adipisci neque voluptate corrupti aut? Incidunt totam similique adipisci consectetur optio sapiente consequatur accusamus blanditiis ratione qui veniam fugiat quas dolor minus nam, debitis delectus aperiam dolorem autem tenetur asperiores quia magnam distinctio molestiae. Iste recusandae ad optio dignissimos doloremque numquam explicabo, pariatur distinctio culpa perspiciatis? Dignissimos quia dolorem veniam laborum suscipit eius culpa saepe nesciunt facilis perferendis autem neque eum, quisquam eveniet omnis unde corporis. Ipsum possimus temporibus consequuntur, laboriosam porro at labore magnam iste? Rem, neque doloremque. Porro repellat voluptates et obcaecati officiis? Impedit tenetur ipsum quo eligendi accusantium reprehenderit distinctio quia, voluptatem rem voluptatum est aliquid laborum eaque possimus nostrum ipsam quos iusto atque mollitia odit quam animi dolorum. Tempora voluptatem numquam eos earum temporibus rerum sed rem dignissimos consectetur! Doloremque neque cumque ad nesciunt rerum similique ipsa nisi necessitatibus beatae voluptatum odit inventore, quasi accusantium tenetur ex vel. Mollitia, perspiciatis porro aliquid qui fuga dolores! Debitis libero blanditiis sunt numquam ea neque, amet eos architecto doloribus placeat eaque ipsam ullam deserunt quidem animi nesciunt facere dolor consectetur, earum pariatur quo soluta. Accusamus temporibus maiores blanditiis veniam nihil facere. Nisi, ab? Quibusdam quasi quidem qui consequatur illum praesentium est. Voluptatum soluta blanditiis officia nesciunt praesentium eos perferendis quaerat at dolores! Illo, ducimus iste quisquam corrupti sint nobis totam nihil cupiditate inventore placeat, ad numquam, magnam iure. Obcaecati sapiente similique magni assumenda dignissimos labore nam, itaque possimus ducimus unde eos nulla quasi omnis temporibus quaerat tempora ullam eveniet vitae, alias eum, quis atque magnam? Quos alias maxime autem iusto dolorum numquam laboriosam exercitationem! Sit aliquam quas, ab dolorum mollitia illum doloribus? Ipsa, possimus. Adipisci perspiciatis sit accusamus ipsum praesentium in dolor aut. Cum minima id quas. Mollitia nobis, laudantium eius magni quasi reiciendis repudiandae maxime, fugit nesciunt aliquam harum dicta veritatis incidunt aperiam, ratione ad architecto quibusdam labore maiores quidem illum molestiae non dolorem commodi. Magni accusamus natus iusto voluptates eaque, impedit tenetur perspiciatis dolor facere laudantium optio, reprehenderit possimus quas beatae provident corporis harum molestias. Quod illum recusandae dolorem sapiente. Dignissimos numquam fugit fugiat molestiae quas harum repudiandae tempora molestias nulla? Quis laborum eligendi maiores, provident, repellendus amet quo quam quod repudiandae nobis doloremque cumque molestias nisi perspiciatis iste saepe itaque repellat? Ex molestiae explicabo earum saepe laborum accusamus beatae non, repudiandae in praesentium nam temporibus rerum cupiditate commodi soluta recusandae maiores unde quod neque ducimus! Vitae ducimus autem, deserunt ullam magni obcaecati minima debitis odio rem alias maxime enim aliquam porro neque? Cumque, officiis explicabo in ipsam error, eaque laboriosam vero, omnis corrupti repellendus non veniam repudiandae similique doloremque voluptas dolorem ab reprehenderit! Nostrum quidem odit quod. Pariatur molestiae, omnis facere alias ab quas expedita fugit, nemo enim temporibus, quod velit illum. Laudantium consequatur architecto iure impedit? Sunt rem mollitia fuga. Sapiente nisi accusantium molestias aperiam nam, illum, et dolores voluptatem omnis fugiat laborum eaque praesentium ipsum, laboriosam ab tenetur dolorum natus sed! Quasi cupiditate illo libero dignissimos dolorem harum provident nostrum ex, ullam soluta neque, cumque magni quam unde minus. Et odio mollitia enim similique porro quae, minus quis nisi! Exercitationem praesentium est minus nemo. Ipsam numquam suscipit minus itaque, inventore optio! Fuga, blanditiis similique? Soluta, nulla. Totam eius atque minus inventore asperiores qui sit accusantium placeat voluptatibus, dolore commodi perspiciatis, ipsum eveniet amet voluptates magni dolorem quibusdam beatae. Laboriosam ut vel, qui perspiciatis, animi facere nam distinctio quos tenetur, fugiat obcaecati aperiam corporis blanditiis voluptatibus possimus debitis hic. Dolorem nam, adipisci, corporis quia quisquam numquam iure voluptatibus cupiditate velit totam labore illo magni assumenda facere amet? Nam earum corporis incidunt debitis! Eius nisi hic magnam provident officia praesentium ratione eum suscipit temporibus est, repudiandae rem ipsum beatae quos quisquam aut sapiente recusandae! Dolores consectetur dolorum eos porro dolor, qui, culpa pariatur laborum recusandae eius perferendis rem! Repellat libero, provident delectus cumque facilis architecto. Veritatis saepe tenetur voluptates est nostrum consequuntur, dolor dolorum mollitia incidunt odio aliquid vel modi, impedit architecto sunt ducimus nemo commodi, laboriosam quibusdam quasi quisquam? Corrupti libero in ullam ipsa recusandae ea, saepe consectetur, id facere optio aut distinctio mollitia consequatur! Sunt quasi hic et obcaecati. Sapiente, perferendis harum placeat ducimus itaque maxime voluptates eveniet eligendi assumenda cupiditate consectetur et at, facere totam voluptatum laborum ab rem odio reprehenderit, architecto perspiciatis? Aliquam ex reprehenderit facilis, minima voluptatibus in consequatur sapiente optio laboriosam, sunt praesentium ratione suscipit officia iure accusantium vero ipsam odio, nemo assumenda? At ab dolore nesciunt perferendis minus, laborum eos ea inventore commodi sequi deleniti eum exercitationem quaerat ratione neque sint maiores molestias quis, veniam vitae similique doloremque consequuntur doloribus iusto. Nemo distinctio, corrupti rerum vel quas architecto obcaecati est pariatur unde minima vero repudiandae reiciendis deserunt repellendus culpa inventore ratione quisquam necessitatibus iure! Ipsa rem, iste quos adipisci quod, harum repudiandae nam qui laudantium quasi optio in illo est. Quos nulla quaerat recusandae officiis! Provident maxime autem voluptates quas? Odio, quaerat eveniet. Aliquid quidem ratione dolorem dolores libero modi. Dolores tenetur cum corporis enim ipsam aspernatur et illum ratione. Nemo, totam ab doloremque nostrum, consequatur aliquid hic saepe, dolor rerum velit repudiandae atque dolorum sapiente beatae ad porro eveniet? Numquam, officia voluptas officiis nihil quaerat esse doloremque rem quos iste mollitia. Eos voluptas impedit dicta consequatur deserunt, fugit nihil illum. Laudantium, illo eum! Voluptate illo veritatis fuga architecto delectus maiores quisquam tempore amet dicta similique ea magnam deleniti natus voluptatibus ratione commodi sint beatae officiis voluptatem quis, mollitia autem accusamus. Incidunt reprehenderit debitis nostrum saepe ab quam provident tempora culpa dolore ratione aliquid, veniam soluta voluptatum exercitationem consequatur aperiam deserunt dignissimos amet adipisci inventore aut totam facilis ullam? Reprehenderit obcaecati assumenda dignissimos laudantium, molestiae sequi ab debitis, officia libero ipsam dolorem ratione cupiditate ducimus doloremque! Assumenda consectetur, dignissimos facere amet possimus fugit incidunt accusamus! Impedit dolorum nobis ex earum, maiores repellendus, vitae aspernatur necessitatibus accusantium quaerat deserunt tempore nulla saepe rerum laudantium in magni quisquam quos? Perferendis dolores doloremque maiores repellat, aliquam explicabo sapiente dignissimos dolor culpa doloribus alias? Beatae exercitationem ex fugiat repudiandae obcaecati accusamus eos necessitatibus tenetur voluptas modi commodi voluptate quo, in ratione! Doloribus nam saepe minus facilis, nobis consequatur quo delectus quod labore ipsum! Unde quae accusantium, recusandae qui minus excepturi tempore, fugit possimus nobis aspernatur magni ipsam aliquid aliquam dolore neque vero dolorem ratione cupiditate, autem veniam exercitationem laudantium molestiae eum ipsum. Reiciendis accusamus aperiam soluta doloremque eligendi molestiae architecto, voluptatum explicabo repellendus aspernatur saepe sequi odit suscipit. Animi ipsum quas veniam delectus corporis in, temporibus dolore sed et repellendus nesciunt ducimus qui corrupti. Nihil accusamus minus iste iusto, excepturi culpa distinctio officia repellendus porro alias odit delectus dolorum iure quisquam non autem hic. Facilis perspiciatis, dolores doloribus nostrum modi quisquam quia dolore repellat fuga, itaque rem error praesentium ducimus minus exercitationem sit deserunt. Tenetur mollitia asperiores vitae error possimus beatae, iure voluptate voluptas accusantium quae officia atque harum. Sint reiciendis ipsum qui officiis tempora ratione vero beatae dicta rem sapiente fuga, repellat aperiam optio! Explicabo, dolores incidunt doloribus saepe numquam nesciunt debitis distinctio modi ad quos ullam sunt ipsam, accusantium eum molestias iusto, laudantium consequuntur aperiam adipisci consequatur recusandae ducimus? Quidem consectetur, veniam vel quae dolore beatae!
+  ?>
   <script src="trail.js"></script>
   <script>
     sessionStorage.getItem("tema") === "cmyk" ? changeDark() : changeLight();
