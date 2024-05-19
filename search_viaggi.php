@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="flex-1">
-      <a class="btn btn-ghost text-xl" style="font-family: Pacifico;">Paper Travels</a>
+      <a class="btn btn-ghost text-xl" style="font-family: Pacifico;" href="homepage.php">Paper Travels</a>
     </div>
     <form
       class="container z-50 sticky top-20 left-0 flex items-center justify-center w-screen gap-10 bg-base-200 p-6 rounded-xl"
@@ -131,8 +131,8 @@
         <div class="card card-side bg-base-200 shadow-xl w-3/4 my-12">
         <figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="120" height="120" fill="currentColor"><path d="M1.94607 9.31543C1.42353 9.14125 1.4194 8.86022 1.95682 8.68108L21.043 2.31901C21.5715 2.14285 21.8746 2.43866 21.7265 2.95694L16.2733 22.0432C16.1223 22.5716 15.8177 22.59 15.5944 22.0876L11.9999 14L17.9999 6.00005L9.99992 12L1.94607 9.31543Z"></path></svg></figure>
         <div class="card-body">
-          <h2 class="card-title text-primary">' . $row["partenza"] . ' - ' . ucfirst($destinazione) . '</h2>
-          <div>';
+          <div class="card-title text-primary text-2xl">' . $row["partenza"] . ' - ' . ucfirst($destinazione) . '</div>
+          <div class="text-lg">';
     $stmt2 = $conn->prepare("SELECT destinazione, mezzo FROM destinazioni WHERE id_viaggio = ?");
     $stmt2 -> bind_param("i", $row["id_viaggio"]);
     $stmt2-> execute();
@@ -141,21 +141,21 @@
     while($innerRow = $resultInner -> fetch_assoc()){
       switch($innerRow["mezzo"]){
         case "Aereo":
-          $svg = '<span class="whitespace-nowrap">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M14 8.94737L22 14V16L14 13.4737V18.8333L17 20.5V22L12.5 21L8 22V20.5L11 18.8333V13.4737L3 16V14L11 8.94737V3.5C11 2.67157 11.6716 2 12.5 2C13.3284 2 14 2.67157 14 3.5V8.94737Z"></path></svg></span>';
+          $svg = '🛫';
           break;
         case "Treno":
-          $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M17.2 20L19 21.5V22H5V21.5L6.8 20H5C3.89543 20 3 19.1046 3 18V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V18C21 19.1046 20.1046 20 19 20H17.2ZM7 5C5.89543 5 5 5.89543 5 7V18H19V7C19 5.89543 18.1046 5 17 5H7ZM12 17C10.8954 17 10 16.1046 10 15C10 13.8954 10.8954 13 12 13C13.1046 13 14 13.8954 14 15C14 16.1046 13.1046 17 12 17ZM6 7H18V11H6V7Z"></path></svg>';
+          $svg = '🚄';
           break;
         case "Nave":
-          $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M4 10.4V4C4 3.44772 4.44772 3 5 3H10V1H14V3H19C19.5523 3 20 3.44772 20 4V10.4L21.0857 10.7257C21.5974 10.8792 21.8981 11.4078 21.7685 11.9261L20.2516 17.9938C20.1682 17.9979 20.0844 18 20 18C19.4218 18 18.8665 17.9019 18.3499 17.7213L19.6 12.37L12 10L4.4 12.37L5.65008 17.7213C5.13348 17.9019 4.5782 18 4 18C3.91564 18 3.83178 17.9979 3.74845 17.9938L2.23152 11.9261C2.10195 11.4078 2.40262 10.8792 2.91431 10.7257L4 10.4ZM6 9.8L12 8L18 9.8V5H6V9.8ZM4 20C5.53671 20 6.93849 19.4223 8 18.4722C9.06151 19.4223 10.4633 20 12 20C13.5367 20 14.9385 19.4223 16 18.4722C17.0615 19.4223 18.4633 20 20 20H22V22H20C18.5429 22 17.1767 21.6104 16 20.9297C14.8233 21.6104 13.4571 22 12 22C10.5429 22 9.17669 21.6104 8 20.9297C6.82331 21.6104 5.45715 22 4 22H2V20H4Z"></path></svg>';
+          $svg = '🚢';
           break;
       }
-      echo $previousDestinazione." - ".$innerRow["destinazione"]. " - ".$svg."<br>";
+      echo "<div>".$previousDestinazione." - ".$innerRow["destinazione"]. " - ".$svg."</div>";
       $previousDestinazione = $innerRow["destinazione"];
     }
     echo '</div>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary" value="'.$row["id_viaggio"].'">Prenota</button>
+            <button class="btn btn-primary" value="'.$row["id_prenotazione"].'" onclick="window.location.href = \'checkout.php?persone='.$nPersone.'&id='.$row["id_viaggio"].'\'">Prenota</button>
           </div>
         </div>
       </div>
