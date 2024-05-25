@@ -17,7 +17,7 @@
 
 <body class="transition-colors duration-200"
     style='background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("https://wallpaperswide.com/download/travel_to_norway_s_lofoten_islands-wallpaper-1920x1080.jpg");'>
-    <div class="navbar bg-base-200 fixed top-0 left-0">
+    <div class="navbar bg-base-200 fixed top-0 left-0 z-50">
         <div class="navbar-start">
             <a class="btn btn-ghost text-xl" style="font-family: Pacifico;">Paper Travels</a>
         </div>
@@ -43,49 +43,65 @@
             </button>
         </div>
     </div>
-    <div class="container w-screen flex flex-col h-screen overflow-hidden items-center justify-center">
-        <div class="text-2xl mt-24" id="viaggioText">Gestione viaggi</div>
-        <div class="text-2xl mt-24 hidden" id="prenotazioneText">Gestione prenotazioni</div>
-        <div class="text-2xl mt-24 hidden" id="destinazioneText">Gestione destinazioni</div>
-        <form action="scripts/viaggi.php" method="post"
-            class="w-4/5 border-2 border-transparent rounded-xl shadow-xl h-3/4 mt-12 flex flex-col items-center"
-            id="viaggio">
-            <label class="label" for="partenza">Partenza:</label>
-            <input class="w-3/4 input cursor-text input-bordered" type="text" id="partenza" name="partenza" required><br>
+    <div class="container mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Travel Agency Data</h1>
+    <?php
+    // Connessione al database
+    include "connessione.php";
 
-            <label class="label" for="costo">Costo:</label>
-            <input class="w-3/4 input cursor-text input-bordered" type="number" step="0.01" id="costo" name="costo" required><br>
+    // Funzione per creare le card
+    function createCard($title, $content) {
+      echo "<div class='card shadow-lg mb-6'>";
+      echo "<div class='card-body'>";
+      echo "<h2 class='card-title text-xl font-bold'>$title</h2>";
+      echo "<p>$content</p>";
+      echo "</div>";
+      echo "</div>";
+    }
 
-            <label class="w-3/4 label" for="tipo_sistemazione">Tipo di Sistemazione:</label>
-            <select class="w-3/4 select cursor-text select-bordered" type="text" id="tipo_sistemazione" name="tipo_sistemazione" required><br>
-            <option value="Hotel">Hotel(camera e colazione)</option>
-            <option value="Appartamento">Appartamento</option>
-            <option value="Mezza pensione">Mezza pensione</option>
-            <option value="All-inclusive">All-inclusive</option>
-            </select>
-            <label class="label" for="idViaggio">Id(solo per modifica e cancellazione):</label>
-            <input class="w-3/4 input cursor-text input-bordered" type="number" step="1" id="idViaggio" name="idViaggio"><br>
-            <div class="flex mt-auto mb-12">
-                <button class="btn btn-primary mx-12" value="inserimento">
-                    Inserisci
-                </button>
-                <button class="btn btn-primary mx-12" value="rimozione">
-                    Rimuovi
-                </button>
-                <button class="btn btn-primary mx-12" value="modifica">
-                    Modifica
-                </button>
-            </div>
-        </form>
-        <form action="" method="post" class="w-4/5 border-2 border-transparent rounded-xl shadow-xl h-3/4 mt-12 hidden"
-            id="prenotazione">
+    // Recupera e visualizza i dati dalla tabella 'cliente'
+    echo "<h2 class='text-2xl font-bold mb-4'>Clienti</h2>";
+    $result = $conn->query("SELECT * FROM cliente");
+    while ($row = $result->fetch_assoc()) {
+      createCard("Cliente: " . $row['nome'] . " " . $row['cognome'], 
+        "Codice Fiscale: " . $row['codice_fiscale'] . "<br>" .
+        "Indirizzo: " . $row['via'] . " " . $row['numero_civico'] . ", " . $row['citta'] . ", " . $row['provincia'] . "<br>" .
+        "Telefono: " . $row['numero_telefono'] . "<br>" .
+        "Email: " . $row['email']);
+    }
 
-        </form>
-        <form action="" method="post" class="w-4/5 border-2 border-transparent rounded-xl shadow-xl h-3/4 mt-12 hidden"
-            id="destinazione">
+    // Recupera e visualizza i dati dalla tabella 'destinazioni'
+    echo "<h2 class='text-2xl font-bold mb-4'>Destinazioni</h2>";
+    $result = $conn->query("SELECT * FROM destinazioni");
+    while ($row = $result->fetch_assoc()) {
+      createCard("Destinazione: " . $row['destinazione'], 
+        "ID Viaggio: " . $row['id_viaggio'] . "<br>" .
+        "Mezzo: " . $row['mezzo']);
+    }
 
-        </form>
-    </div>
+    // Recupera e visualizza i dati dalla tabella 'prenotazione'
+    echo "<h2 class='text-2xl font-bold mb-4'>Prenotazioni</h2>";
+    $result = $conn->query("SELECT * FROM prenotazione");
+    while ($row = $result->fetch_assoc()) {
+      createCard("Prenotazione ID: " . $row['id_prenotazione'], 
+        "Data Partenza: " . $row['data_partenza'] . "<br>" .
+        "Data Ritorno: " . $row['data_ritorno'] . "<br>" .
+        "Cliente: " . $row['cliente'] . "<br>" .
+        "Viaggio: " . $row['viaggio']);
+    }
+
+    // Recupera e visualizza i dati dalla tabella 'viaggio'
+    echo "<h2 class='text-2xl font-bold mb-4'>Viaggi</h2>";
+    $result = $conn->query("SELECT * FROM viaggio");
+    while ($row = $result->fetch_assoc()) {
+      createCard("Viaggio ID: " . $row['id_viaggio'], 
+        "Partenza: " . $row['partenza'] . "<br>" .
+        "Costo: " . $row['costo'] . " EUR<br>" .
+        "Tipo Sistemazione: " . $row['tipo_sistemazione']);
+    }
+
+    $conn->close();
+    ?>
     <svg class="trail" viewBox="0 0 400 400">
         <path d="M 100 100 L 200 200 L 300 100" />
     </svg>
