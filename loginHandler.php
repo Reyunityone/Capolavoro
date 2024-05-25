@@ -17,7 +17,9 @@
             $_SESSION["cognome"] = $row["cognome"];
             $_SESSION["codice_fiscale"] = $row["codice_fiscale"];
             $_SESSION["loggedin"] = true;
-            header("Location: homepage.php");
+            $_SESSION["tipo_utente"] = $row["tipo_utente"];
+            if($row["tipo_utente"] == "admin") header("Location: admin/admin.php");
+            else header("Location: homepage.php");
             exit;
         }
     }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="../homepage.css">
     <style>
         body {
             background-image: none !important;
@@ -17,14 +17,21 @@
 
 <body class="transition-colors duration-200"
     style='background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("https://wallpaperswide.com/download/travel_to_norway_s_lofoten_islands-wallpaper-1920x1080.jpg");'>
+    <?php
+        session_start();
+        if($_SESSION["tipo_utente"] == "utente") header("Location: ../homepage.php");
+    ?>
     <div class="navbar bg-base-200 fixed top-0 left-0">
         <div class="navbar-start">
-            <a class="btn btn-ghost text-xl" style="font-family: Pacifico;">Paper Travels</a>
+            <form action="../logout.php" method="post">
+                <button class="btn btn-ghost text-xl" style="font-family: Pacifico;" name="logout">Paper Travels</button>
+            </form>
         </div>
         <div class="navbar-center">
             <button class="btn btn-ghost" onclick="showViaggio()">Gestione Viaggi</button>
             <button class="btn btn-ghost" onclick="showPrenotazione()">Gestione Prenotazioni</button>
             <button class="btn btn-ghost" onclick="showDestinazione()">Gestione Destinazioni</button>
+            <a class="btn btn-ghost" href="visualizzaAll.php">Visualizza tutto</a>
         </div>
         <div class="navbar-end">
             <button class="btn btn-ghost" id="change-theme">
@@ -43,53 +50,106 @@
             </button>
         </div>
     </div>
+
     <div class="container w-screen flex flex-col h-screen overflow-hidden items-center justify-center">
+        <?php
+
+        if (isset($_SESSION['status']) && isset($_SESSION['message'])) {
+            $status = $_SESSION['status'];
+            $message = $_SESSION['message'];
+
+            echo "<div class='message $status'>$message</div>";
+
+            // Cancella i messaggi dalla sessione
+            unset($_SESSION['status']);
+            unset($_SESSION['message']);
+        }
+        ?>
         <div class="text-2xl mt-24" id="viaggioText">Gestione viaggi</div>
         <div class="text-2xl mt-24 hidden" id="prenotazioneText">Gestione prenotazioni</div>
         <div class="text-2xl mt-24 hidden" id="destinazioneText">Gestione destinazioni</div>
-        <form action="scripts/viaggi.php" method="post"
+        <form action="viaggi.php" method="post"
             class="w-4/5 border-2 border-transparent rounded-xl shadow-xl h-3/4 mt-12 flex flex-col items-center"
             id="viaggio">
             <label class="label" for="partenza">Partenza:</label>
-            <input class="w-3/4 input cursor-text input-bordered" type="text" id="partenza" name="partenza" required><br>
+            <input class="w-3/4 input cursor-text input-bordered" type="text" id="partenza" name="partenza"><br>
 
             <label class="label" for="costo">Costo:</label>
-            <input class="w-3/4 input cursor-text input-bordered" type="number" step="0.01" id="costo" name="costo" required><br>
+            <input class="w-3/4 input cursor-text input-bordered" type="number" step="0.01" id="costo" name="costo"><br>
 
             <label class="w-3/4 label" for="tipo_sistemazione">Tipo di Sistemazione:</label>
-            <select class="w-3/4 select cursor-text select-bordered" type="text" id="tipo_sistemazione" name="tipo_sistemazione" required><br>
-            <option value="Hotel">Hotel(camera e colazione)</option>
-            <option value="Appartamento">Appartamento</option>
-            <option value="Mezza pensione">Mezza pensione</option>
-            <option value="All-inclusive">All-inclusive</option>
+            <select class="w-3/4 select cursor-text select-bordered" type="text" id="tipo_sistemazione"
+                name="tipo_sistemazione"><br>
+                <option value="Hotel">Hotel(camera e colazione)</option>
+                <option value="Appartamento">Appartamento</option>
+                <option value="Mezza pensione">Mezza pensione</option>
+                <option value="All-inclusive">All-inclusive</option>
             </select>
             <label class="label" for="idViaggio">Id(solo per modifica e cancellazione):</label>
-            <input class="w-3/4 input cursor-text input-bordered" type="number" step="1" id="idViaggio" name="idViaggio"><br>
+            <input class="w-3/4 input cursor-text input-bordered" type="number" step="1" id="idViaggio"
+                name="idViaggio"><br>
             <div class="flex mt-auto mb-12">
-                <button class="btn btn-primary mx-12" value="inserimento">
+                <button class="btn btn-primary mx-12" value="inserimento" name="send">
                     Inserisci
                 </button>
-                <button class="btn btn-primary mx-12" value="rimozione">
+                <button class="btn btn-primary mx-12" value="rimozione" name="send">
                     Rimuovi
                 </button>
-                <button class="btn btn-primary mx-12" value="modifica">
+                <button class="btn btn-primary mx-12" value="modifica" name="send">
                     Modifica
                 </button>
             </div>
         </form>
-        <form action="" method="post" class="w-4/5 border-2 border-transparent rounded-xl shadow-xl h-3/4 mt-12 hidden"
+        <form action="prenotazione.php" method="post"
+            class=" hidden w-4/5 border-2 border-transparent rounded-xl shadow-xl h-3/4 mt-12 flex flex-col items-center"
             id="prenotazione">
+            <label class="label" for="data_partenza">Data Partenza:</label>
+            <input class="w-3/4 input cursor-text input-bordered" type="date" id="data_partenza" name="data_partenza"
+                required><br>
 
+            <label class="label" for="data_ritorno">Data Ritorno:</label>
+            <input class="w-3/4 input cursor-text input-bordered" type="date" id="data_ritorno" name="data_ritorno"
+                required><br>
+                
+            <label class="label" for="viaggio">ID Viaggio:</label>
+            <input class="w-3/4 input cursor-text input-bordered" type="number" id="viaggio" name="viaggio"
+                required><br>
+
+            <label class="label" for="idPrenotazione">ID Prenotazione (solo per modifica e cancellazione):</label>
+            <input class="w-3/4 input cursor-text input-bordered" type="number" step="1" id="idPrenotazione"
+                name="idPrenotazione"><br>
+
+            <div class="flex mt-auto mb-12">
+                <button class="btn btn-primary mx-12" value="inserimento" name="send">Inserisci</button>
+                <button class="btn btn-primary mx-12" value="rimozione" name="send">Rimuovi</button>
+                <button class="btn btn-primary mx-12" value="modifica" name="send">Modifica</button>
+            </div>
         </form>
-        <form action="" method="post" class="w-4/5 border-2 border-transparent rounded-xl shadow-xl h-3/4 mt-12 hidden"
+        <form action="destinazioni.php" method="post"
+            class="hidden w-4/5 border-2 border-transparent rounded-xl shadow-xl h-3/4 mt-12 flex flex-col items-center"
             id="destinazione">
+            <label class="label" for="id_viaggio">ID Viaggio:</label>
+            <input class="w-3/4 input cursor-text input-bordered" type="number" id="id_viaggio" name="id_viaggio"
+                required><br>
 
+            <label class="label" for="destinazione">Destinazione:</label>
+            <input class="w-3/4 input cursor-text input-bordered" type="text" id="destinazione" name="destinazione"
+                required><br>
+
+            <label class="label" for="mezzo">Mezzo:</label>
+            <input class="w-3/4 input cursor-text input-bordered" type="text" id="mezzo" name="mezzo"><br>
+
+            <div class="flex mt-auto mb-12">
+                <button class="btn btn-primary mx-12" value="inserimento" name="send">Inserisci</button>
+                <button class="btn btn-primary mx-12" value="rimozione" name="send">Rimuovi</button>
+                <button class="btn btn-primary mx-12" value="modifica" name="send">Modifica</button>
+            </div>
         </form>
     </div>
     <svg class="trail" viewBox="0 0 400 400">
         <path d="M 100 100 L 200 200 L 300 100" />
     </svg>
-    <script src="trail.js"></script>
+    <script src="../trail.js"></script>
     <script>
         function showViaggio() {
             hideAllForms();
